@@ -30,6 +30,28 @@ router.post('/', createAppointment)
 /**
  * @swagger
  * /api/appointment/{appointmentId}:
+ *   get:
+ *     summary: Get an appointment by ID
+ *     tags: [Appointments]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: appointmentId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Appointment'
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Appointment not found
  *   put:
  *     summary: Update an appointment
  *     tags: [Appointments]
@@ -56,7 +78,6 @@ router.post('/', createAppointment)
  *         description: Unauthorized
  *       404:
  *         description: Appointment not found
- * 
  *   delete:
  *     summary: Delete an appointment
  *     tags: [Appointments]
@@ -71,29 +92,6 @@ router.post('/', createAppointment)
  *     responses:
  *       200:
  *         description: Appointment deleted successfully
- *       401:
- *         description: Unauthorized
- *       404:
- *         description: Appointment not found
- * 
- *   get:
- *     summary: Get an appointment by ID
- *     tags: [Appointments]
- *     security:
- *       - BearerAuth: []
- *     parameters:
- *       - in: path
- *         name: appointmentId
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Success
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Appointment'
  *       401:
  *         description: Unauthorized
  *       404:
